@@ -40,7 +40,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     function styleInfo(feature){
         return{
             opacity: 1,
-            fillopacity: 1,
+            fillOpacity: 1,
             fillColor: getColor(feature.geometry.coordinates[2]),
             color:"#00000",
             radius: getRadius(feature.properties.mag),
@@ -51,7 +51,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
     L.geojson(data, {
         pointToLayer: function(feature, latlng) {
-           return l.circleMarker(latlng);
+           return L.circleMarker(latlng);
     },
     style: styleInfo,
     onEachFeature:  function(feature, layer){
@@ -63,12 +63,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
             
     }
     }).addTo(map);
-    let legend=L.control({
+    let legend=L.Control({
         position: "bottomright"
     });
 
     legend.onAdd = function(){
-     let container =   l.Domutil.create("div","info legend");
+     let container =   L.Domutil.create("div","info legend");
      let grades = [-10, 10, 30, 50, 70, 90];
      let colors = ['#983300', '#d4ee00', '#eecc00', '#ee9c00', '#ea822c', '#ea2c2c'];
      for(let index = 0; i< grades.length; index++){
